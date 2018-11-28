@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Provider } from "redux-zero/react";
+import store from "./redux/store";
+
+import CounterClass from './CounterClass';
+import CounterFunc from './CounterFunc';
+
+const borda = {"border": "solid", "padding": "10px", "margin": "10px"}
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <div>
+
+          <div style={borda}>
+            Testando redux
+          </div>
+
+          <div style={borda}>
+            <CounterClass />
+          </div>
+
+          <div style={borda}>
+            <CounterFunc />
+          </div>
+
+        </div>
+      </Provider>
     );
   }
 }
